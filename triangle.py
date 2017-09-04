@@ -6,9 +6,9 @@ def isValidTriangle(x,y,z):
 
 
 def triangleType(x,y,z):
-    if x == y == z:
+    if x == y and y== z and x == z:
         return "Equilateral triangle"
-    elif x != y != z:
+    elif x != y and y != z and x != z:
         return "Scalene triangle"
     else:
         return "isosceles triangle"
