@@ -6,10 +6,8 @@ def isValidTriangle(x,y,z):
         return False
     else:
         return True
-
-
 def triangleType(x,y,z):
-    if x == y and y== z and x == z:
+    if x == y and y == z and x == z:
         return "Equilateral triangle"
     elif x != y and y != z and x != z:
         return "Scalene triangle"
@@ -33,6 +31,26 @@ def validateInput(side):
         print "Input must be an integer"
         return False
     return True
+
+''' def validateInput(input):
+    if isinstance(input, str):
+        print "String is not a valid input"
+        return False
+    elif isinstance(input, float):
+        print "Decimal Number is not a valid input"
+        return False
+    elif input == 0:
+        print "0 is not a valid input"
+        return False
+    elif input < 0:
+        print "Negative number is not a valid input"
+        return False
+    elif input > sys.maxint:
+        print "Input is out of integer boundary"
+        return False
+    else:
+        print "valid input"
+        return True '''
 
 def main(x, y, z):
     if validateInput(x) and validateInput(y) and validateInput(z):
@@ -102,11 +120,5 @@ if __name__ == '__main__':
     main(25, 15, 110)
     print "\nTest Case: z = y + z"
     main(10, 40, 50)
-
-
-
-    print "\n\n======Exception B: non-integer numbers====="
-
-
 
 
