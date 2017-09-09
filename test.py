@@ -20,7 +20,7 @@ def validateInput(input):
         print "valid input"
         return True                    
 
-validateInput("a")
+validateInput("@")
 validateInput(3.54)
 validateInput(0)
 validateInput(-1000)

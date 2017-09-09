@@ -1,13 +1,20 @@
 import sys
 
-def isValidTriangle(x,y,z):
+def isValidTriangle(x, y, z):
+    '''
+    return True if x, y, and z are valid numbers for triangle.
+    return False any one of the parameters is greater than addition of the other two parameters
+    '''
     if x >= y + z or y >= x + z or z >= x + y:
         print "Not a triangle"
         return False
     else:
         return True
 
-def triangleType(x,y,z):
+def triangleType(x, y, z):
+    '''
+    return right type of triangle based on parameters
+    '''
     if x == y and y == z and x == z:
         return "Equilateral triangle"
     elif x != y and y != z and x != z:
@@ -34,6 +41,14 @@ def triangleType(x,y,z):
     return True '''
 
 def validateInput(input):
+    '''
+    This function take one paremeter to check if the paremeter is valid input
+    
+    return False if the input is one of following list:
+        String, Decimal number, 0, Negative integer, Exceeded maximum integer value
+    
+    return True only if the input is a valid number
+    '''
     if isinstance(input, str):
         print "String is not a valid input"
         return False
@@ -44,22 +59,24 @@ def validateInput(input):
         print "0 is not a valid input"
         return False
     elif input < 0:
-        print "Negative number is not a valid input"
+        print "Invalid input. Side length must be positive"
         return False
     elif input > sys.maxint:
-        print "Input is out of integer boundary"
+        print "Exceed max integer value"
         return False
     else:
         print "valid input"
         return True
 
 def main(x, y, z):
+    '''
+    This function takes 3 parameters
+    It will print the type of triangle from the parameters
+    if each parameter is valid input and three parameters can create valid triangle 
+    '''
     if validateInput(x) and validateInput(y) and validateInput(z):
-        x = int(x)
-        y = int(y)
-        z = int(z)
-        if isValidTriangle(x, y, z):
-            print triangleType(x, y, z)
+      if isValidTriangle(x, y, z):
+        print triangleType(x, y, z)
 
 
 
@@ -67,7 +84,7 @@ def main(x, y, z):
 if __name__ == '__main__':
     print "======Exception A: negative numbers====="
     print "\nTest Case: negative inputs:"
-    main(-2,-4,-5)
+    main(-2, -4, -5)
     main(-3, 5, 5)
     main(3, -1, 2)
     main(7, 12, -9)
@@ -121,3 +138,21 @@ if __name__ == '__main__':
     main(25, 15, 110)
     print "\nTest Case: z = y + z"
     main(10, 40, 50)
+
+    print "\Test Case: One of the inputs number is decimal number"
+    main(10.5, 10, 10)
+    main(10, 10.5, 10)
+    main(10, 10, 10.5)
+    main(10.5, 10.5, 10)
+    main(10.5, 10, 10.5)
+    main(10, 10.5, 10.5)
+    main(10.5, 10.5, 10.5)
+
+    print "\Test Case: One of the inputs is String"
+    main("A", 35, 50)
+    main(50, "$", 10)
+    main(40, 20, "BB")
+    main("C", "D", 33)
+    main(33, "@", "90")
+    main("40", 31, "R")
+    main("X", "Y", "Z")
