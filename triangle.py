@@ -34,7 +34,6 @@ def validateInput(side):
         return False
     return True
 
-
 def main(x, y, z):
     if validateInput(x) and validateInput(y) and validateInput(z):
         x = int(x)
