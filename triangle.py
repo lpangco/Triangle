@@ -22,23 +22,6 @@ def triangleType(x, y, z):
     else:
         return "isosceles triangle"
 
-''' def validateInput(side):
-    try:
-        if side%1 != 0:
-            print "input number is not a integer"
-            return False
-        val = int(side)
-        if val < 0:
-            print "Invalid input. Side length must be positive"
-            return False
-        elif val > sys.maxint:
-            print "Exceed max integer value"
-            return False
-
-    except ValueError:
-        print "Input must be an integer"
-        return False
-    return True '''
 
 def validateInput(input):
     '''
@@ -65,7 +48,7 @@ def validateInput(input):
         print "Exceed max integer value"
         return False
     else:
-        print "valid input"
+       # print "valid input"
         return True
 
 def main(x, y, z):
@@ -75,8 +58,8 @@ def main(x, y, z):
     if each parameter is valid input and three parameters can create valid triangle 
     '''
     if validateInput(x) and validateInput(y) and validateInput(z):
-      if isValidTriangle(x, y, z):
-        print triangleType(x, y, z)
+        if isValidTriangle(x, y, z):
+            print triangleType(x, y, z)
 
 
 
@@ -139,7 +122,7 @@ if __name__ == '__main__':
     print "\nTest Case: z = y + z"
     main(10, 40, 50)
 
-    print "\Test Case: One of the inputs number is decimal number"
+    print "\nTest Case: One of the inputs number is decimal number"
     main(10.5, 10, 10)
     main(10, 10.5, 10)
     main(10, 10, 10.5)
@@ -148,7 +131,7 @@ if __name__ == '__main__':
     main(10, 10.5, 10.5)
     main(10.5, 10.5, 10.5)
 
-    print "\Test Case: One of the inputs is String"
+    print "\nTest Case: One of the inputs is String"
     main("A", 35, 50)
     main(50, "$", 10)
     main(40, 20, "BB")
