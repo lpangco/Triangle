@@ -65,7 +65,6 @@ def main(x, y, z):
 
 # test cases, inputs as x, y, z
 if __name__ == '__main__':
-    print "======Exception A: negative numbers====="
     print "\nTest Case: negative inputs:"
     main(-2, -4, -5)
     main(-3, 5, 5)
