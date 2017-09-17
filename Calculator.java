@@ -125,7 +125,7 @@ public class Calculator {
                 case 6:
                     System.out.println("Bye!");
                     break;
-                // when user enter an number other than integer, prompt error message
+                // when user enter an number other than 1-6, prompt error message
                 default:
                     System.out.println("You entered an invalid number");
                     break;
