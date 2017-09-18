@@ -107,7 +107,13 @@ public class Calculator {
                     a = scan.nextInt();
                     // take second user input number
                     b = scan.nextInt();
-                    showResult(divide(a, b));
+                    if(b == 0) {
+                    	//check for 0 dividend
+                    	System.out.println("Invalid Dividend");
+                    }
+                    else {
+                    	showResult(divide(a, b));
+                    }
                     break;
 
                 // when user select 5, do modulus
