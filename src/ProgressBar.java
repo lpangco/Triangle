@@ -7,7 +7,7 @@
  * Given the percentage completed and a point (X, Y), determine out whether that point will be red or blue.
  * 
  * Write a function that takes P (percentage completed), X (x coordinate of a point) and Y (y coordinate of the same point) as arguments 
- * and prints “RED” or “BLUE” as output. RED if the given point will be colored red and BLUE if the given point will have blue color for P% progress.
+ * and prints RED or BLUE as output. RED if the given point will be colored red and BLUE if the given point will have blue color for P% progress.
  */
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class ProgressBar {
 	        int p = scan.nextInt();
 	        int x = scan.nextInt();
 	        int y = scan.nextInt();
-	        if (p < 0 || p > 100 || x < 0 || y < 0 || x > 100 || y > 100) {
+	        if (p < 0 || p > 100 || x < 0 || y < 0 || x > 100 || y > 100  || x == 50 && y == 50 ) {
 				System.out.print("Input out of range!");
 				continue;
 			}
@@ -55,7 +55,7 @@ public class ProgressBar {
 			System.out.println("RED");
 		}
 		
-		else if(p > 0) {			
+		else if(p > 0 && p < 100 ) {			
 			// If in first quadrant
 			if(0 < p && p <= 25 && (ptY * Math.tan(angleInRadian) >= ptX)) {
 				System.out.println("RED");
@@ -65,11 +65,23 @@ public class ProgressBar {
 				System.out.println("RED");
 			} 
 			// Third quadrant
-			else if (50 < p && p < 75 && (ptY * Math.tan(angleInRadian) <= ptX)) {
+			else if (50 < p && p <= 75 && (ptY * Math.tan(angleInRadian) <= ptX)) {
 				System.out.println("RED");
 			}
 			// Forth quadrant
-			else if (75 <= p && p < 100 && (ptY * Math.tan(angleInRadian) >= ptX)){
+			else if (75 < p && p < 100 && (ptY * Math.tan(angleInRadian) >= ptX)){
+				System.out.println("RED");
+			} 
+			//check 25% edge
+			else if (p >= 25 && ptY == 0 && ptX > 0 ) { 
+				System.out.println("RED");
+			}
+			//check 50% edge
+			else if (p >= 50 && ptX == 0 && ptY < 0 ) {
+				System.out.println("RED");
+			}
+			//check 75% edge
+			else if (p >= 75 && ptY == 0 && ptX < 0 ) {
 				System.out.println("RED");
 			} else {
 				System.out.println("BLUE");
