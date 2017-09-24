@@ -48,8 +48,12 @@ public class ProgressBar {
 		}	
 	}
 	
-	// the findColor method to take precentage, x coordinate and y coordinate of a point,
-	// and print the given point's color
+	/* the findColor method to take precentage, x coordinate and y coordinate of a point,
+	* and print the given point's color
+	* @param p takes a number as percentage (without %)
+    * @param x is the x coordinate of a point
+    * @param end is the y coordinate of a point
+    */
 	public static void findColor(int p, int x, int y) {
 		// define center point
 		int centerX = 50;
