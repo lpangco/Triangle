@@ -6,69 +6,89 @@
  * nchored by the line segment from the center of the square to the center of the top side, and proceeding clockwise. 
  * Given the percentage completed and a point (X, Y), determine out whether that point will be red or blue.
  * 
- * Write a function that takes P (percentage completed), X (x coordinate of a point) and Y (y coordinate of the same point) as arguments 
- * and prints RED or BLUE as output. RED if the given point will be colored red and BLUE if the given point will have blue color for P% progress.
+ * This program takes P (percentage completed), X (x coordinate of a point) and Y (y coordinate of the same point) as arguments 
+ * and prints “RED” or “BLUE” as output. RED if the given point will be colored red 
+ * and BLUE if the given point will have blue color for P% progress.
  */
 import java.util.Scanner;
 
 public class ProgressBar {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		//String cont = "Y";
+		// keep looping to get user input for next point
 		while (true) {
+			// prompt user to input the perecentate, x coordinate and y coordinate for the point
 			System.out.print("Enter the percentage (without %), x, and y: ");
+
+			// take user inputs
 	        int p = scan.nextInt();
 	        int x = scan.nextInt();
 	        int y = scan.nextInt();
+
+	        // if user input is not in range, print error message
 	        if (p < 0 || p > 100 || x < 0 || y < 0 || x > 100 || y > 100  || x == 50 && y == 50 ) {
 				System.out.print("Input out of range!");
 				continue;
 			}
+
+			// call the method to determine the color of the given point 
 	        findColor(p, x, y);
 	        
-			System.out.print("Continue?(Y/N) ");
+	        // ask user if they want to continue 
+			System.out.print("Continue?(input N to quit) ");
+
+			// take user input for the continue option 
 			Scanner scanner = new Scanner(System.in);
 			String cont = scanner.nextLine().toUpperCase();
+
+			// if user choose not to continue, stop the loop
 			if(cont.equals("N")) {
 				break;
 			}
 		}	
 	}
 	
+	// the findColor method to take precentage, x coordinate and y coordinate of a point,
+	// and print the given point's color
 	public static void findColor(int p, int x, int y) {
+		// define center point
 		int centerX = 50;
 		int centerY = 50;
+
+		// get distance from the given point to center 
 		double ptX = x - centerX;
 		double ptY = y - centerY;
 		
+		// convert precentage to degree
 		double angleInDegree = p / 100.0 * 360;
-		System.out.println("Degree: "+angleInDegree);
 
+		// convert degree to radian
 		double angleInRadian = Math.toRadians(angleInDegree);
-		System.out.println("radian: "+angleInRadian);
 
-		double cos = Math.cos(angleInRadian); 
+		// if percentage is 0%, then all points must be blue
 		if (p == 0) {
 			System.out.println("BLUE");
 		}
+		// if percentage is 100%, then all points must be red
 		if (p == 100) {
 			System.out.println("RED");
 		}
 		
+		// if percentage is in a valid range
 		else if(p > 0 && p < 100 ) {			
-			// If in first quadrant
+			// If point in first quadrant
 			if(0 < p && p <= 25 && (ptY * Math.tan(angleInRadian) >= ptX)) {
 				System.out.println("RED");
 			} 
-			// second quadrant
+			// If point in second quadrant
 			else if (25 < p && p <= 50 && (ptY * Math.tan(angleInRadian) <= ptX)){
 				System.out.println("RED");
 			} 
-			// Third quadrant
+			// If point in third quadrant
 			else if (50 < p && p <= 75 && (ptY * Math.tan(angleInRadian) <= ptX)) {
 				System.out.println("RED");
 			}
-			// Forth quadrant
+			// If point in forth quadrant
 			else if (75 < p && p < 100 && (ptY * Math.tan(angleInRadian) >= ptX)){
 				System.out.println("RED");
 			} 
