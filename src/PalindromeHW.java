@@ -1,0 +1,55 @@
+package palindromPkg;
+import java.util.Scanner;
+
+public class PalindromeHW {
+
+	public static void main (String[]args)
+	{
+		boolean cont = true;
+		do{
+		System.out.print("Enter your desired text to test for palindromic properties: ");
+		Scanner scan = new Scanner(System.in);
+		String paliString = scan.nextLine();
+		paliString = paliString.toLowerCase();
+		if(isPal(paliString))
+		{
+			System.out.println("Is palindrome");
+		}
+		else
+			System.out.println("Not a palindrome");
+		System.out.println("Would you like to test again?(Y/N): ");
+		String result =  scan.nextLine();
+		result = result.toLowerCase();
+		if(result.equals("n"))
+			cont = false;
+		}while(cont);
+
+	}
+	
+	
+
+	
+	public static boolean isPal(String s)
+	{
+		s = s.replaceAll("\\s", ""); //Removes all spaces
+		if(s.equals("")) //Edge case 1: User enters no characters
+			return true;
+		boolean istrue = false;
+		for(int i = 0; i < s.length()/2 + 1; i++)
+		{
+			String paliStringT = s.substring(s.length() - 1 - i, s.length() - i);
+			String pali2 = s.substring(i, i+1);
+			if(pali2.equals(paliStringT))
+			{
+				istrue = true;
+			}
+			else
+				return false;
+		}
+		return istrue;
+		
+	}
+}
+
+
+
